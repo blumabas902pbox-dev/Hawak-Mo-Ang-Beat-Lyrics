@@ -1,0 +1,250 @@
+<!Programmer: Bryan Jay M. Lumabas>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 10: Song Toggle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: rainbowBackground 20s infinite linear;
+            transition: background-color 0.5s ease;
+        }
+
+        @keyframes rainbowBackground {
+            0%   { background-color: #2d2d2d; }
+            10%   { background-color: #f7f7f7; }
+            20%  { background-color: #ffadad; }
+            40%  { background-color: #ffd6a5; }
+            50%  { background-color: #fdffb6; }
+            60%  { background-color: #caffbf; }
+            70%  { background-color: #9bf6ff; }
+            80%  { background-color: #bdb2ff; }
+            90%  { background-color: #ffc6ff; }
+            100% { background-color: #2d2d2d; }
+        }
+
+        #title {
+            padding: 20px 40px;
+            background: #f7f7f7;
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            box-shadow: 0 5px 10px bisque;
+            min-width: 320px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #2d2d2d;
+        }
+
+        #title.active {
+            color: #4a4e69;
+            transform: translateY(-5px);
+            background: #f7f7f7;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 14px 28px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            background-color: #2d2d2d;
+            color: #f2f2f2;
+            box-shadow: 0 5px 10px bisque;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #4a4e69;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px bisque;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        img {
+            display: block;
+            margin: 0 auto
+            margin-bottom: 60px;
+            width: 300px;
+            max-width: 100%;
+            border-radius: 10px;
+            animation: darkRainbowShadow 5s infinite;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="Hawak Mo Ang Beat © DJ Mogo (Official Release).jpg" alt="Animated Shadow Image">
+
+    <style>
+    img {
+        display: block;
+        margin: 0 auto 50px auto;
+        width: 300px;
+        max-width: 100%;
+        border-radius: 10px;
+        animation: darkRainbowShadow 5s infinite;
+    }
+
+    @keyframes darkRainbowShadow {
+        0%   { box-shadow: 0 20px 50px bisque; }
+        10%  { box-shadow: 0 20px 50px #333333; }
+        20%  { box-shadow: 0 20px 50px #5e1a1a; }
+        40%  { box-shadow: 0 20px 50px #5e3e1a; }
+        50%  { box-shadow: 0 20px 50px #5e5e1a; }
+        60%  { box-shadow: 0 20px 50px #1a5e1a; }
+        70%  { box-shadow: 0 20px 50px #1a5e5e; }
+        80%  { box-shadow: 0 20px 50px #1a1a5e; }
+        90%  { box-shadow: 0 20px 50px #5e1a5e; }
+        100% { box-shadow: 0 20px 50px bisque; }
+    }
+</style> 
+
+    <audio id="bgMusic" loop>
+        <source src="Hawak Mo Ang Beat © DJ Mogo (Official Release).mp3" type="audio/mpeg">
+    </audio>
+
+    <h1 id="title">Hawak Mo Ang Beat</h1>
+    <button id="toggleBtn">Play Now</button>
+
+    <script>
+        const titleElement = document.getElementById("title");
+        const btnElement = document.getElementById("toggleBtn");
+        const music = document.getElementById("bgMusic");
+
+        const originalText = "Hawak Mo Ang Beat";
+        
+        const newText = "[Intro]";
+
+        btnElement.addEventListener('click', () => {
+            
+            titleElement.classList.toggle('active');
+
+            if (titleElement.classList.contains('active')) {
+                titleElement.textContent = newText;
+                btnElement.textContent = "Stop Music";
+                
+                music.play().catch(e => console.log("Audio playback requires interaction first."));
+            } else {
+                titleElement.textContent = originalText;
+                btnElement.textContent = "Play Now";
+
+                music.pause();
+                music.currentTime = 0; 
+            }
+        });
+    </script>
+    
+    <script>
+        const lyricsData = [
+            { time: 0.7, text: "DJ, patunugin mo" },
+            { time: 4.4, text: "Tonight, ikaw ang reyna ng sayaw" },
+            { time: 8.5, text: "[Interlude]" },
+            { time: 20.9, text: "[Verse 1]" },
+            { time: 21.5, text: "Pagpasok mo pa lang, gumalaw ang gabi" },
+            { time: 24.6, text: "Sa ilalim ng ilaw, ikaw ang sinisigawin" },
+            { time: 29.2, text: "Hakbang mo'y diretso, walang alinlangan" },
+            { time: 33.5, text: "Sa bawat galaw mo, eksaktong dahilan" },
+            { time: 37, text: "Kumpas ng musika, hawak mo ang sandali" },
+            { time: 40, text: "Isang tingin mo lang, ako'y bumibigay din" },
+            { time: 43.4, text: "Wala nang salitang kailangan pa" },
+            { time: 47.3, text: "Sayaw mo pa lang, sagot na sa lahat" },
+            { time: 51.9, text: "[Chorus]" },
+            { time: 52.6, text: "Hawak mo ang beat, hawak mo ang gabi" },
+            { time: 55.3, text: "Sa bawat galaw mo, ako'y nabibihag" },
+            { time: 59.1, text: "Hawak mo ang beat, huwag mong bibitawan" },
+            { time: 62.7, text: "Hanggang sa huling tugtog ng sayawan" },
+            { time: 66.9, text: "Hawak mo ang beat sa ilaw at dilim" },
+            { time: 70, text: "Ikaw ang ritmo ng damdamin" },
+            { time: 73.2, text: "Hawak mo ang beat dito sa pista" },
+            { time: 77, text: "Ikaw ang dahilan bakit sumisigla" },
+            { time: 81.2, text: "[Verse 2]" },
+            { time: 82.1, text: "Pawis sa noo, pero tuloy parin" },
+            { time: 84.5, text: "Lalo kang kumikinang sa gitna ng dilim" },
+            { time: 88.3, text: "Sa bawat ikot mo, palakas ang bass" },
+            { time: 91.7, text: "Parang sinasabi mo, 'Sumabay ka na rin'" },
+            { time: 95.3, text: "Lumapit ka pa, huwag nang umatras" },
+            { time: 98.9, text: "Sa sayaw ng gabi, ikaw ang lakas" },
+            { time: 102.7, text: "Kapag hawak mo ang tugtog sa kamay" },
+            { time: 105.8, text: "Lahat sumusunod sa galaw mong tunay" },
+            { time: 110.7, text: "[Chorus]" },
+            { time: 111.1, text: "Hawak mo ang beat, hawak mo ang gabi" },
+            { time: 114.3, text: "Sa bawat galaw mo, ako'y nabibihag" },
+            { time: 118.5, text: "Hawak mo ang beat, huwag mong bibitawan" },
+            { time: 121.7, text: "Hanggang sa huling tugtog ng sayawan" },
+            { time: 125.9, text: "[Verse 3]" },
+            { time: 126.3, text: "Clap, clap, taas kamay" },
+            { time: 128.2, text: "Ikot-ikot, sabay-sabay" },
+            { time: 130.9, text: "Clap, clap, galaw lang 'yan" },
+            { time: 132.5, text: "DJ, ulitin mo pa diyan" },
+            { time: 133.1, text: "Clap, clap, taas kamay" },
+            { time: 135.2, text: "Ikot-ikot, sabay-sabay" },
+            { time: 137.9, text: "Clap, clap, galaw lang 'yan" },
+            { time: 139.5, text: "DJ, ulitin mo pa diyan" },
+            { time: 142.3, text: "Kapag bumagsak ang huling patak" },
+            { time: 145.1, text: "Huling patak" },
+            { time: 147.5, text: "Dito sa sahig, sabay tayong sasagot" },
+            { time: 151.3, text: "Sasagot" },
+            { time: 154.9, text: "Sa tunog ng disco, wala nang tanong" },
+            { time: 158.1, text: "Ikaw ang reyna ng galaw ngayon, oh" },
+            { time: 168.6, text: "[Chorus]" },
+            { time: 169.1, text: "Hawak mo ang beat, hawak mo ang gabi" },
+            { time: 172.5, text: "Sa bawat galaw mo, ako'y nabibihag" },
+            { time: 175.9, text: "Hawak mo ang beat, huwag mong bibitawan" },
+            { time: 179.8, text: "Hanggang sa huling tugtog ng sayawan" },
+            { time: 182.9, text: "Hawak mo ang beat, sumayaw ka pa" },
+            { time: 186.7, text: "Sa disco ng gabi, ikaw ang tala" },
+            { time: 189.3, text: "Hawak mo ang beat dito sa pista" },
+            { time: 193.8, text: "Ikaw ang tunog ng hindi kukupas pa" },
+            { time: 197.2, text: "Hawak mo ang beat" },
+            { time: 202.9, text: "DJ, huwag mo munang patayin" },
+            { time: 204.6, text: "Hawak mo ang beat" },
+            { time: 210.2, text: "DJ, huwag mo munang patayin" },
+            { time: 212.5, text: "Hawak mo ang beat" }
+        ];
+
+        music.ontimeupdate = () => {
+            if (titleElement.classList.contains('active')) {
+                const current = music.currentTime;
+                const activeLyric = lyricsData.filter(l => l.time <= current).pop();
+                if (activeLyric) {
+                    titleElement.textContent = activeLyric.text;
+                }
+            }
+        };
+    </script>
+</body>
+
+<style>
+  footer {
+    padding-top: 40px;
+    text-align: center;
+    background-color: none;
+  }
+
+  .credits {
+    font-family: sans-serif;
+    font-size-adjust: 20px;
+    color: #4a4e69;
+  }
+</style>
+
+<footer>
+  <div class="credits">
+    Made by Bryan Jay M. Lumabas from BSIT2D
+  </div>
+</footer>
+</html>
