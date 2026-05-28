@@ -20,14 +20,14 @@
 
         @keyframes rainbowBackground {
             0%   { background-color: #2d2d2d; }
-            10%   { background-color: #f7f7f7; }
-            20%  { background-color: #ffadad; }
-            40%  { background-color: #ffd6a5; }
-            50%  { background-color: #fdffb6; }
-            60%  { background-color: #caffbf; }
-            70%  { background-color: #9bf6ff; }
-            80%  { background-color: #bdb2ff; }
-            90%  { background-color: #ffc6ff; }
+            10%  { background-color: #333333; }
+            20%  { background-color: #5e1a1a; }
+            40%  { background-color: #5e3e1a; }
+            50%  { background-color: #5e5e1a; }
+            60%  { background-color: #1a5e1a; }
+            70%  { background-color: #1a5e5e; }
+            80%  { background-color: #1a1a5e; }
+            90%  { background-color: #5e1a5e; }
             100% { background-color: #2d2d2d; }
         }
 
@@ -76,7 +76,7 @@
         
         img {
             display: block;
-            margin: 0 auto
+            margin: 0 auto;
             margin-bottom: 60px;
             width: 300px;
             max-width: 100%;
@@ -99,16 +99,17 @@
         animation: darkRainbowShadow 5s infinite;
     }
 
+    /* Swapped to the lighter/pastel colors */
     @keyframes darkRainbowShadow {
         0%   { box-shadow: 0 20px 50px bisque; }
-        10%  { box-shadow: 0 20px 50px #333333; }
-        20%  { box-shadow: 0 20px 50px #5e1a1a; }
-        40%  { box-shadow: 0 20px 50px #5e3e1a; }
-        50%  { box-shadow: 0 20px 50px #5e5e1a; }
-        60%  { box-shadow: 0 20px 50px #1a5e1a; }
-        70%  { box-shadow: 0 20px 50px #1a5e5e; }
-        80%  { box-shadow: 0 20px 50px #1a1a5e; }
-        90%  { box-shadow: 0 20px 50px #5e1a5e; }
+        10%  { box-shadow: 0 20px 50px #f7f7f7; }
+        20%  { box-shadow: 0 20px 50px #ffadad; }
+        40%  { box-shadow: 0 20px 50px #ffd6a5; }
+        50%  { box-shadow: 0 20px 50px #fdffb6; }
+        60%  { box-shadow: 0 20px 50px #caffbf; }
+        70%  { box-shadow: 0 20px 50px #9bf6ff; }
+        80%  { box-shadow: 0 20px 50px #bdb2ff; }
+        90%  { box-shadow: 0 20px 50px #ffc6ff; }
         100% { box-shadow: 0 20px 50px bisque; }
     }
 </style> 
@@ -238,10 +239,9 @@
   .credits {
     font-family: sans-serif;
     font-size-adjust: 20px;
-    color: #4a4e69;
+    color: bisque;
   }
 </style>
-
 <footer>
   <div class="credits">
     Made by Bryan Jay M. Lumabas from BSIT2D
